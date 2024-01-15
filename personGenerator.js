@@ -40,8 +40,8 @@ const personGenerator = {
         "count": 10,
         "list": {     
             "id_1": "Александра",
-            "id_2": "Маша",
-            "id_3": "Ира",
+            "id_2": "Мария",
+            "id_3": "Ирина",
             "id_4": "Алина",
             "id_5": "Диана",
             "id_6": "Нина",
@@ -239,11 +239,18 @@ const personGenerator = {
               break
          
             }
-
+            
         randMouth = this.mouthValue (this.mouthNameJson, randMouth);
-       // console.log(randDay +"."+ randMouth +"."+randYear);
-        return randDay +" "+ randMouth +" "+randYear;
-    
+            if (String(randMouth).substr(-1,1) === "т") { 
+                let mouth = (String(randMouth).substr(0)); 
+                return randDay +" "+ mouth + "а"+" "+randYear;
+            }
+                        
+            if (String(randMouth).substr(-1,1) === "ь" || "й") { 
+                let mouth = (String(randMouth).substr(0,String(randMouth).length-1)); 
+                return randDay +" "+ mouth + "я"+" "+randYear;
+            }
+       
     },
 
     randomProfession : function() {
